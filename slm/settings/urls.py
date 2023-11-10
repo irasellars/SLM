@@ -118,7 +118,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('', include('slm.urls'))
+    path('', include('slm.urls')),
+    path('', include('slm.map.urls')) #2023/11/10 ira.sellars Add path for map
 ]
 
 if getattr(settings, 'DJANGO_DEBUG_TOOLBAR', False):
