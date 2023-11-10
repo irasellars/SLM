@@ -230,7 +230,7 @@ class SiteLogBinder(BaseBinder):
         0: {
             reg(log_name, 0, bindings): bindings for log_name, bindings in [
                 ('Prepared by (full name)', ('prepared_by', to_str)),
-                ('Date Prepared', ('date_prepared', ignored)),
+                ('Date Prepared', ('date_prepared', to_date)),
                 ('Report Type', ('report_type', ignored)),
                 ('Previous Site Log', ('previous_log', ignored)),
                 ('Modified/Added Sections', ('modified_section', ignored))

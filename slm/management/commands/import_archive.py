@@ -121,6 +121,13 @@ class Command(BaseCommand):
                             log_str = archive.extractfile(member).read()
                             params, prep_date = self.log_params(log_str, site)
 
+                            if prep_date: #2023/11/10 ils Have to change prep_date from datetime.datetime to datetime.date
+                                prep_date = date(
+                                    year=prep_date.year,
+                                    month=prep_date.month,
+                                    day=prep_date.day
+                                )
+
                             log_time = make_aware(datetime(
                                 year=log_date.year,
                                 month=log_date.month,
@@ -158,7 +165,7 @@ class Command(BaseCommand):
                             if (
                                 log_date and
                                 site.join_date is None or
-                                site.join_date > log_time.date()
+                                site.join_date >= log_time.date() #2023/11/10 ils Added equal for testing
                             ):
                                 site.join_date = log_time.date()
                                 site.save()
